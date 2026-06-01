@@ -1,0 +1,36 @@
+<mat-card>
+    <h1>{{isineditmode ? 'Update Student' : 'Add Student'}}</h1>
+    <form #stdform="ngForm" (ngSubmit)="stdAdd()">
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" ngModel name="fname" fname="ngModel" required class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" ngModel name="lname" lname="ngModel" required class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" ngModel name="email" email="ngModel" required class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact</label>
+            <input type="text" ngModel name="contact" contact="ngModel" required class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="isActive">First Name</label>
+            <select ngModel name="isActive" isActive="ngModel" required class="form-control" >
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+            </select>
+        </div>
+
+        <button
+        *ngIf="!isineditmode"
+        mat-raised-button color="primary">Add Student</button>
+        <button
+        *ngIf="isineditmode"
+        (click)="onUpdatestd()"
+        mat-raised-button color="primary">Update Student</button>
+    </form>
+</mat-card>

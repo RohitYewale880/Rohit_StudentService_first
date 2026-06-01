@@ -1,0 +1,39 @@
+<mat-card>
+    <div class="table-responsive" *ngIf="stddata.length > 0; else nostd">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th>sr. no.</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Is Active</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let std of stddata; index as i; trackBy : trackbufun">
+                    <td>{{i + 1}}</td>
+                    <td>{{std.fname}} {{std.lname}}</td>
+                    <td>{{std.email}}</td>
+                    <td>{{std.contact}}</td>
+                    <td>{{std.isActive ? 'Yes' : 'No'}}</td>
+                    <td><button 
+                        (click)="onEdit(std)"
+                        mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button></td>
+                    <td>
+                        <button 
+                        (click)="onRemove(std.stdId)"
+                        mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #nostd>
+        <p class="alert-alert-info">
+            No student is adde yet!!!
+        </p>
+    </ng-template>
+</mat-card>
